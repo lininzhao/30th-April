@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .box{
+            width: 50%;
+            margin: 100px auto;
+            font-size: 14px;
+            text-align: center;
+        }
+        table,th,td{
+            border: 1px solid;
+        }
+        table{
+            border-collapse: collapse;
+            width: 100%;
+            table-layout: fixed;
+        }
+        th{
+            height: 30px;
+        }
+        button{
+            margin: 20px 0;
+            padding: 10px;
+        }
+        input{
+            margin: 10px 0;
+        }
+        thead{
+            background-color: #ccc;
+        }
+        span{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        科  &nbsp;&nbsp;&nbsp;&nbsp;  目：<input type="text">
+        <br>
+        所属学院：<input type="text">
+        <br>
+        <button type="button">清空</button>
+        <button type="button">添加</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>课程</th>
+                    <th>所属学院</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML</td>
+                    <td>尚学堂</td>
+                    <td><span>删除</span></td>
+                </tr>
+                <tr>
+                    <td>CSS</td>
+                    <td>上学堂</td>
+                    <td><span>删除</span></td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>上学堂</td>
+                    <td><span>删除</span></td>
+                </tr>
+                <tr>
+                    <td>jQuery</td>
+                    <td>尚学堂</td>
+                    <td><span>删除</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script>
+        //设置清空按钮
+        $('button').first()
+                    .click(function(){
+                        $('table tbody').empty();
+                    });
+        //设置添加按钮
+        $('button').last()
+                    .click(function(){
+                        //获取文本框内的文字
+                        var subject=$('input').first().val();
+                        var college=$('input').last().val();
+                        //判断添加内容不能为空
+                        if(subject==''||college==''){
+                            alert('科目和所属学院不能为空');
+                             //清空文本框
+                             $('input').first().val('');
+                            $('input').last().val('');
+                        }else{
+                            var str=`<tr><td>${subject}</td><td>${college}</td><td><span>删除</span></td></tr>`;
+                            //将字符串放入文档中
+                            $('tbody').append(str);
+                            //清空文本框
+                            $('input').first().val('');
+                            $('input').last().val('');
+                        }
+                    });
+
+         //删除效果
+         //采用事件委托的方法添加
+         $('tbody').on('click','span',function(){
+            var res=confirm('是否删除');
+            if(res){
+                $(this).parent().parent().remove();
+            };
+         })
+    </script>
+</body>
+</html>

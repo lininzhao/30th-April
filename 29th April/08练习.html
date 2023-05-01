@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .wrap{
+            margin: 100px auto;
+            width: 700px;
+        }
+        .photo{
+            width: 600px;
+            height: 65px;
+        }
+        ul{
+            list-style: none;
+        }
+        ul>li>img{
+            width: 100px;
+            float:left;
+            margin: 10px;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+        ul>li:first-child img{
+            opacity: 1;
+        }
+        .photo>ul>li:last-child img{
+            margin-right: 0px;
+        }
+        h2{
+            text-align: center;
+            margin: 20px auto;
+        }
+        .content>img{
+            width: 600px;
+            overflow: hidden;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .des{
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h2>王者荣耀相册</h2>
+        <div class="photo">
+            <ul>
+                <li><img src="./1.png" alt="图1:西施"></li>
+                <li><img src="./2.png" alt="图2:王昭君"></li>
+                <li><img src="./3.png" alt="图3:大乔"></li>
+                <li><img src="./4.png" alt="图4:貂蝉"></li>
+                <li><img src="./5.png" alt="图5:虞姬"></li>
+            </ul>
+        </div>
+        <div class="content">
+            <img src="./1.png" alt="">
+        </div>
+        <div class="des">图1:西施</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script>
+        $('li img').mouseover(function(){
+                       var a= $(this).attr('src');
+                       $('.content img').attr('src',a);
+                       $('.des').html($(this).attr('alt'));
+                       $(this).css('opacity',1);
+                     })
+                     .mouseleave(function(){
+                        $(this).css('opacity',0.5);
+                     })
+    </script>
+</body>
+</html>

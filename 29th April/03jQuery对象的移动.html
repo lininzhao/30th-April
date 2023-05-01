@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li id="li1">我是1个li</li>
+        <li>我是2个li</li>
+        <li>我是3个li</li>
+        <li id="box">我是4个li</li>
+        <li>我是5个li</li>
+        <li>我是6个li</li>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script>
+        var $newLi=$('<li>我是新的li</li>');
+        var $li4=$('#box');
+        li4.after($newLi);
+
+        var $li0=$('<li>我是第0个li</li>');
+        var $li1=$('#li1');
+        $li1.before($li0);
+
+        $li1.after($li4);
+
+    </script>
+</body>
+</html>

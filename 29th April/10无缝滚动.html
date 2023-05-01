@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            overflow: hidden;
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            line-height: 2em;
+            border: 1px solid ;
+            padding: 10px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        ul{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <div>
+    <ul>
+        <li><span>1<a href="#">“五一”出行火爆 站票旅客挤满高铁车厢</a></span></li>
+        <li><span>2<a href="#">别眨眼！60秒速览罕见日全环食</a></span></li>
+        <li><span>3<a href="#">AI大时代，最怕中国大厂又点错科技树</a></span></li>
+        <li><span>4<a href="#">又“爆雷”了！这一银行，即将被接管并出售？</a></span></li>
+        <li><span>5<a href="#">疯狂的五一，旅游业“干完这票、回家养老”？</a></span></li>
+        <li><span>6<a href="#">昨晚的洪崖洞，全是人</a></span></li>
+        <li><span>7<a href="#">英核潜艇机密现身酒吧厕所？英军回应</a></span></li>
+        <li><span>8<a href="#">"五一"假期需求井喷 旅游行业如何迎“大考”</a></span></li>
+        <li><span>9<a href="#">4月制造业采购经理指数回落 非制造业扩张</a></span></li>
+        <li><span>10<a href="#">申军良，遗憾没能见到人贩子最后一面</a></span></li>
+    </ul>
+</div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script>
+        //复制li将li添加到ul中
+        $('li').clone().appendTo('ul');
+
+        //封装一个方法该方法的作用是让ul的滚动条向上滚动
+        function moveUp(){
+            if($('div').scrollTop()>$('ul').height()/2){
+                $('div').scrollTop(0);
+            }else{
+                $('div').scrollTop($('div').scrollTop()+1);
+            }    
+        }
+        //启动定时器
+        var timer=setInterval(moveUp,10);
+        //设置鼠标移入移出
+        $('div').hover(function(){
+            clearInterval(timer);
+        },function(){
+            timer=setInterval(moveUp,10);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            width: 100px;
+            height: 200px;
+            background-color: pink;
+            position: fixed;
+            top: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+
+    <script>
+        move();
+        function move(){
+            var bodyHeight = $(document).innerHeight();
+
+            var divHeight = $('div').height();
+
+            $('div').animate({
+                top:bodyHeight - divHeight
+            },5000,'linear')
+            .animate({
+                top:0
+            },5000,'linear',function(){
+                move();
+            })
+        }
+    </script>
+</body>
+</html>
